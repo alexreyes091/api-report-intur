@@ -11,10 +11,10 @@ def getRequestDocument(id, requestId):
         file_data = cursor.fetchone()
         file_name = file_data[2]
 
-        with open(file_name, 'wb') as file:
+        with open('tmp/' + str(requestId) + str(id) + '_' + file_name, 'wb') as file:
             file.write(file_data[4])
         
-        return FileResponse(getcwd() + '/' + file_name)
+        return FileResponse(getcwd() + '/tmp/' + str(requestId) + str(id) + '_' + file_name)
 
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
