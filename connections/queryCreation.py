@@ -123,6 +123,7 @@ def getRequestModifier(requestId):
                 'ishere': data[7],
                 'requestModifierOption': getRequestModifierOption(data[0]),
             })
+        print(requestModifier)
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
 
