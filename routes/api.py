@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from connections.queryActivation import getRequestActivation
 from connections.queryChangePrice import getRequestChangePrice
 from connections.queryCreation import getRequestCreation
 from connections.queryDeactivation import getRequestDeactivation
@@ -29,3 +30,9 @@ async def api(requestId: int):
 @router.get("/document/download/{id}/{requestId}")
 async def api(id: int, requestId: int):
     return getRequestDocument(id, requestId)
+
+@router.get("/activation/{requestId}")
+async def api(requestId: int):
+    return {
+        'request': getRequestActivation(requestId),
+    }

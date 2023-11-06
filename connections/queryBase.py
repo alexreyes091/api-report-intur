@@ -89,6 +89,7 @@ def getRequestSigner(requestId, signerId):
         for data in cursor.fetchall():
             requestSigner['signed'] = data[5]
             requestSigner['date'] = data[6]
+            requestSigner['skipped'] = data[8]
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
 
